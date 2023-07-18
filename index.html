@@ -20,50 +20,69 @@
 	</style>
 </head>
 
-<body x-data="pizzaCart">
-	<h1 x-text="title"></h1>
+<body x-data="pizzaCart" class="main flex flex-col" class="max-w-20">
+	<h1 class="heading">Perfect Pizza</h1>
 
-	<table class="pizza-cart" :class="cartTotal ? '' : 'hidden'" x-cloak>
-		<tr>
-			<th>Flavour</th>
-			<th>Size</th>
-			<th>Price</th>
-			<th>Qty</th>
-			<th>Total</th>
-		</tr>
+	<div class="pizza-cart">
 
 		<template x-for="pizza in cartPizzas">
-			<tr>
-				<td x-text="pizza.flavour"></td>
-				<td x-text="pizza.size.charAt(0).toUpperCase() + pizza.size.slice(1)"></td>
-				<td>R<span x-text="pizza.price.toFixed(2)"></span></td>
-				<td>
-					<button @click="removePizzaFromCart(pizza.id)">-</button>
-					x<span x-text="pizza.qty"></span>
-					<button @click="addPizzaToCart(pizza.id)">+</button>
-				</td>
-				<td>R<span x-text="pizza.total.toFixed(2)"></span></td>
-			</tr>
-		</template>
-
-		<tr>
-			<td colspan="1">Total</td>
-			<td><button @click="clearCart()">Clear</button></td>
-			<td colspan="3" align="right">R<span x-text="cartTotal.toFixed(2)"></span></td>
-		</tr>
-	</table>
-
-	<div class="pizza-catalog">
-		<template x-for="pizza in pizzas">
-			<div class="pizza-card">
-				<span x-text="pizza.flavour"></span>
-				<span x-text="pizza.size.charAt(0).toUpperCase() + pizza.size.slice(1)"></span>
-				<span>R<span x-text="pizza.price.toFixed(2)"></span></span>
-				<button @click="addPizzaToCart(pizza.id)">Add to cart</button>
+			<div class="cart-option">
+				<div>
+					<span>Flavour Name</span>
+					<span class="count">5</span>
+				</div>
+				<div>
+					<button class="round" type="button">+</button>
+					<button class="round" type="button">-</button>
+				</div>
+				<span class="cost">R<span>69.99</span></span>
 			</div>
 		</template>
+
+		<div class="total">
+			<span>Total cost</span>
+			<span class="cost">R<span></span></span>
+		</div>
+
+		<!-- <div x-show="message" x-transition class="">
+			<span x-text="message" class=""></span>
+		</div> -->
+
+		<div class="checkout">
+			<button type="button">Checkout</button>
+		</div>
+
+		<div class="payment">
+			<label for="payment-amount">
+				<span>Amount</span>
+				<input type="number" id="payment-amount">
+			</label>
+			<button class="" type="button">Pay</button>
+		</div>
+
 	</div>
 
+	<div class="pizza-menu">
+
+		<template x-for="pizza in pizzas">
+			<div class="menu-option" id="small-pizza">
+				<img class="" src="images/pizza.png" alt="">
+				<h2 class="pizza-title">Small Pizza</h2>
+				<p class="price">R49.99</p>
+				<p class="description">
+					Small pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
+				</p>
+				<button class="" type="button">Add to Cart</button>
+			</div>
+		</template>
+
+	</div>
+
+	<div class="contact w-11/12 text-white text-center flex flex-col">
+		<h2 class="heading">Contact us at:</h2>
+		<span>011 340 1231</span>
+		<span>info@perfectpizza.co.za</span>
+	</div>
 </body>
 
 </html>

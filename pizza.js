@@ -7,6 +7,7 @@ document.addEventListener('alpine:init', () => {
 			cartID: 'jryoqyEwNH',
 			cartPizzas: [],
 			cartTotal: 0,
+			message: '',
 
 			getCart() {
 				const getCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartID}/get`;
